@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
+import {ProductsPage} from "../products/products";
 
 
 @IonicPage()
@@ -22,8 +23,11 @@ export class LoginPage {
   }
 
   login(){
-    this.http.post('http://localhost:8000/api/login', this.user)
-        .subscribe(data => console.log(data));
+    this.http.post<any>('http://localhost:8000/api/login', this.user)
+        .subscribe(data => {
+          window.localStorage.setItem('token', data.token);
+          this.navCtrl.setRoot(ProductsPage)
+        });
   }
 
 }

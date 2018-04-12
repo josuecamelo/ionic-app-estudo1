@@ -7,6 +7,8 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { LoginPage } from '../pages/login/login';
 
+import { ProductsPage } from '../pages/products/products';
+
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpClientModule } from '@angular/common/http';
@@ -17,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
     HomePage,
     ListPage,
     LoginPage, //add login page
+    ProductsPage
   ],
   imports: [
     BrowserModule,
@@ -28,7 +31,8 @@ import { HttpClientModule } from '@angular/common/http';
     MyApp,
     HomePage,
     ListPage,
-    LoginPage
+    LoginPage,
+    ProductsPage
   ],
   providers: [
     StatusBar,
