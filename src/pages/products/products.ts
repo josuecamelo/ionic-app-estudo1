@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
+import { LoginPage } from '../login/login';
 
 /**
  * Generated class for the ProductsPage page.
@@ -17,6 +18,16 @@ import { HttpClient } from '@angular/common/http';
 export class ProductsPage {
   products = []; //array vazio
   constructor(public navCtrl: NavController, public navParams: NavParams, private http: HttpClient) {
+  }
+
+  ionViewCanEnter() {//tem retorno boolean impede acesso a pagina
+    const isAuth = window.localStorage.getItem('token') != null;
+    if (!isAuth){
+      setTimeOut(() => {
+        this.navCtrl.setRoot(LoginPage);
+      });
+    }
+    return isAuth;
   }
 
   ionViewDidLoad() {
