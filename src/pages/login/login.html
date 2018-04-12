@@ -8,5 +8,20 @@
 
 
 <ion-content padding>
+  <form (submit)="login()">
+    <ion-item>
+      <ion-label stacked>E-mail</ion-label>
+      <ion-input [(ngModel)]="user.email" name="email"></ion-input>
+    </ion-item>
 
+    <ion-item>
+      <ion-label stacked>Senha</ion-label>
+      <ion-input [(ngModel)]="user.password" name="password" type="password"></ion-input>
+    </ion-item>
+
+    <button ion-button full>Entrar</button>
+  </form>
+
+  {{ user.email }}
+  {{ user.password }}
 </ion-content>
