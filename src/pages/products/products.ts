@@ -24,16 +24,19 @@ export class ProductsPage {
     const isAuth = window.localStorage.getItem('token') != null;
     if (!isAuth){
       setTimeOut(() => {
-        this.navCtrl.setRoot(LoginPage);
-      });
+        this.navCtrl.setRoot(LoginPage)
+      }, 2000);
     }
     return isAuth;
   }
 
   ionViewDidLoad() {
-    const token = window.localStorage.getItem('token')
-    this.http.get<any>('http://localhost:8000/api/products',{headers: {'Authorization': `Bearer ${token}`}})
-        .subscribe(data=> this.products = data.data);
+    //const token = window.localStorage.getItem('token')
+    //this.http.get<any>('http://localhost:8000/api/products',{headers: {'Authorization': `Bearer ${token}`}})
+      //  .subscribe(data=> this.products = data.data);
+
+    this.http.get<any>('http://localhost:8000/api/products')
+      .subscribe(data=> this.products = data.data);
   }
 
 

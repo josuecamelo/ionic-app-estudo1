@@ -11,7 +11,8 @@ import { ProductsPage } from '../pages/products/products';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { MyHttpInterceptorProvider } from '../providers/my-http-interceptor/my-http-interceptor';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,12 @@ import { HttpClientModule } from '@angular/common/http';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: MyHttpInterceptorProvider,
+      multi: true
+    },
   ]
 })
 export class AppModule {}
